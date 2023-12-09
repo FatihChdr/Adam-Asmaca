@@ -10,60 +10,58 @@ const correctLetters = [];
 const wrongLetters = [];
 let selectedWord = getRandomWord();
 
-
 function getRandomWord() {
-    const words = ["javascript", "java", "python", 'css', 'html']
+    const words = ['ömer', 'hilalaşkım'];
     return words[Math.floor(Math.random() * words.length)];
 }
 
-
-
-
 function displayWord() {
-    word_el.innerHTML = `
-        ${selectedWord.split('').map(letter => `
-        <div class="letter">
-                ${correctLetters.includes(letter) ? letter: ''}
-        </div>
-        `).join('')}
-    
-    `;
-    const w = word_el.innerText.replace(/\s/g, "");
-    if( w === selectedWord) {
+    word_el.innerHTML = selectedWord
+        .split('')
+        .map(letter => `
+            <div class="letter">
+                ${correctLetters.includes(letter) ? letter : ''}
+            </div>`
+        )
+        .join('');
+
+    const w = word_el.innerText.replace(/\s/g, '');
+    if (w === selectedWord) {
         popup.style.display = 'flex';
         message_el.innerText = 'Tebrikler kazandınız.';
     }
 }
+
 function updateWrongLetters() {
     wrongLetters_el.innerHTML = `
-        ${wrongLetters.length > 0 ? '<h3>Hatalı Harfler</h3>':''}
+        ${wrongLetters.length > 0 ? '<h3>Hatalı Harfler</h3>' : ''}
         ${wrongLetters.map(letter => `<span>${letter}</span>`)}
     `;
 
     items.forEach((item, index) => {
         const errorCount = wrongLetters.length;
-        if(index < errorCount) {
-            item.style.display= 'block';
+        if (index < errorCount) {
+            item.style.display = 'block';
         } else {
             item.style.display = 'none';
         }
-    })
+    });
 
-    if(wrongLetters.length === items.length) {
+    if (wrongLetters.length === items.length) {
         popup.style.display = 'flex';
         message_el.innerText = 'Malesef kaybettiniz.';
     }
-
 }
+
 function displayMessage() {
     message.classList.add('show');
 
-    setTimeout(function() {
+    setTimeout(function () {
         message.classList.remove('show');
     }, 2000);
 }
 
-playAgainBtn.addEventListener('click', function() {
+playAgainBtn.addEventListener('click', function () {
     correctLetters.splice(0);
     wrongLetters.splice(0);
     selectedWord = getRandomWord();
@@ -72,23 +70,21 @@ playAgainBtn.addEventListener('click', function() {
     updateWrongLetters();
 
     popup.style.display = 'none';
-})
+});
 
-window.addEventListener('keydown', function(e) {
-    if(e.keyCode >= 65 && e.keyCode <= 90) {
-    const letter = e.key;
+window.addEventListener('keydown', function (e) {
+    const letter = e.key.toLowerCase(); // Küçük harfe çevir
 
-        if(selectedWord.includes(letter)) {
-            if(!correctLetters.includes(letter)) {
+    if (/^[a-zçğıöşü]$/.test(letter)) { // Türkçe karakterleri de kontrol et
+        if (selectedWord.includes(letter)) {
+            if (!correctLetters.includes(letter)) {
                 correctLetters.push(letter);
                 displayWord();
             } else {
                 displayMessage();
-                message.classList.add('show');
-
             }
-        }else {
-            if(!wrongLetters.includes(letter)) {
+        } else {
+            if (!wrongLetters.includes(letter)) {
                 wrongLetters.push(letter);
                 updateWrongLetters();
             } else {
@@ -98,4 +94,4 @@ window.addEventListener('keydown', function(e) {
     }
 });
 
-displayWord()
+displayWord();
