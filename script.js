@@ -11,7 +11,7 @@ const wrongLetters = [];
 let selectedWord = getRandomWord();
 
 function getRandomWord() {
-    const words = ['ömer', 'hilalaşkım'];
+    const words = ['ömer', 'hilalaşkım','ilaydadostim','emrebey','aslanyavrususena', 'samiçuhadar','nesliş'];
     return words[Math.floor(Math.random() * words.length)];
 }
 
