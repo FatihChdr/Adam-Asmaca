@@ -5,23 +5,39 @@ const wrongLetters_el = document.getElementById('wrong-letters');
 const items = document.querySelectorAll('.item');
 const message = document.getElementById('message');
 const playAgainBtn = document.getElementById('play-again');
+const easyBtn = document.getElementById('easy-btn');
+const mediumBtn = document.getElementById('medium-btn');
+const hardBtn = document.getElementById('hard-btn');
 
-const correctLetters = [];
-const wrongLetters = [];
-let selectedWord = getRandomWord();
+let correctLetters = [];
+let wrongLetters = [];
+let selectedWord;
+let difficultyLevel = 'easy'; // Varsayılan zorluk seviyesi
+
+const wordLists = {
+    easy: ['hilalaşkımm', 'ilaydadostim', 'emrebey'],
+    medium: ['halilbur', 'geyşahan', 'acur'],
+    hard: ['ömerinevi', 'malavuran', 'aşkuşum']
+};
 
 function getRandomWord() {
-    const words = ['ömer', 'hilalaşkım','ilaydadostim','emrebey','aslanyavrususena', 'samiçuhadar','nesliş'];
-    return words[Math.floor(Math.random() * words.length)];
+    const words = wordLists[difficultyLevel];
+    let newWord;
+
+    do {
+        newWord = words[Math.floor(Math.random() * words.length)];
+    } while (newWord === selectedWord);
+
+    return newWord;
 }
 
 function displayWord() {
     word_el.innerHTML = selectedWord
         .split('')
         .map(letter => `
-            <div class="letter">
-                ${correctLetters.includes(letter) ? letter : ''}
-            </div>`
+        <div class="letter">
+            ${correctLetters.includes(letter) ? letter : ''}
+        </div>`
         )
         .join('');
 
@@ -34,9 +50,9 @@ function displayWord() {
 
 function updateWrongLetters() {
     wrongLetters_el.innerHTML = `
-        ${wrongLetters.length > 0 ? '<h3>Hatalı Harfler</h3>' : ''}
-        ${wrongLetters.map(letter => `<span>${letter}</span>`)}
-    `;
+      ${wrongLetters.length > 0 ? '<h3>Hatalı Harfler</h3>' : ''}
+      ${wrongLetters.map(letter => `<span>${letter}</span>`)}
+  `;
 
     items.forEach((item, index) => {
         const errorCount = wrongLetters.length;
@@ -62,8 +78,8 @@ function displayMessage() {
 }
 
 playAgainBtn.addEventListener('click', function () {
-    correctLetters.splice(0);
-    wrongLetters.splice(0);
+    correctLetters = [];
+    wrongLetters = [];
     selectedWord = getRandomWord();
 
     displayWord();
@@ -71,6 +87,34 @@ playAgainBtn.addEventListener('click', function () {
 
     popup.style.display = 'none';
 });
+
+easyBtn.addEventListener('click', function () {
+    changeDifficulty('easy');
+});
+
+mediumBtn.addEventListener('click', function () {
+    changeDifficulty('medium');
+});
+
+hardBtn.addEventListener('click', function () {
+    changeDifficulty('hard');
+});
+
+function restartGame() {
+    correctLetters = [];
+    wrongLetters = [];
+    selectedWord = getRandomWord();
+
+    displayWord();
+    updateWrongLetters();
+
+    popup.style.display = 'none';
+}
+
+function changeDifficulty(level) {
+    difficultyLevel = level;
+    restartGame();
+}
 
 window.addEventListener('keydown', function (e) {
     const letter = e.key.toLowerCase(); // Küçük harfe çevir
