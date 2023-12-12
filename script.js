@@ -8,17 +8,44 @@ const playAgainBtn = document.getElementById('play-again');
 const easyBtn = document.getElementById('easy-btn');
 const mediumBtn = document.getElementById('medium-btn');
 const hardBtn = document.getElementById('hard-btn');
+const scoreValue = document.getElementById('score-value');
 
 let correctLetters = [];
 let wrongLetters = [];
 let selectedWord;
 let difficultyLevel = 'easy'; // Varsayılan zorluk seviyesi
+let score = 0;
 
 const wordLists = {
-    easy: ['hilalaşkımm', 'ilaydadostim', 'emrebey'],
-    medium: ['halilbur', 'geyşahan', 'acur'],
-    hard: ['ömerinevi', 'malavuran', 'aşkuşum']
+    easy: ['gül', 'kelebek', 'kuş', 'deniz', 'orman'],
+    medium: ['papatya', 'şelale', 'dağ', 'gökkuşağı', 'balık'],
+    hard: ['volkan', 'şimşek', 'gizemli', 'geceyarısı', 'cadılarbayramı'],
 };
+
+
+const themes = {
+    easy: {
+        backgroundColor: '#87CEEB',  // Light Blue
+        textColor: '#000',
+        buttonColor: '#00FA9A',  // Medium Spring Green
+    },
+    medium: {
+        backgroundColor: '#F0E68C',  // Khaki
+        textColor: '#000',
+        buttonColor: '#FF8C00',  // Dark Orange
+    },
+    hard: {
+        backgroundColor: '#8B0000',  // Dark Red
+        textColor: '#FFF',
+        buttonColor: '#4B0082',  // Indigo
+    },
+};
+
+function applyTheme(theme) {
+    document.body.style.backgroundColor = theme.backgroundColor;
+    document.body.style.color = theme.textColor;
+    // Diğer elementlerin temalarını da aynı şekilde ayarlayabilirsiniz
+}
 
 function getRandomWord() {
     const words = wordLists[difficultyLevel];
@@ -45,6 +72,7 @@ function displayWord() {
     if (w === selectedWord) {
         popup.style.display = 'flex';
         message_el.innerText = 'Tebrikler kazandınız.';
+        updateScore(1);
     }
 }
 
@@ -66,6 +94,7 @@ function updateWrongLetters() {
     if (wrongLetters.length === items.length) {
         popup.style.display = 'flex';
         message_el.innerText = 'Malesef kaybettiniz.';
+        updateScore(-score); // Skoru sıfırla
     }
 }
 
@@ -75,6 +104,14 @@ function displayMessage() {
     setTimeout(function () {
         message.classList.remove('show');
     }, 2000);
+}
+
+function updateScore(value) {
+    score += value;
+    if (value < 0) {
+        score = 0; // Eğer yanlış bilirse skoru sıfırla
+    }
+    scoreValue.innerText = score;
 }
 
 playAgainBtn.addEventListener('click', function () {
@@ -114,6 +151,7 @@ function restartGame() {
 function changeDifficulty(level) {
     difficultyLevel = level;
     restartGame();
+    applyTheme(themes[difficultyLevel]); // Zorluk seviyesine göre tema uygula
 }
 
 window.addEventListener('keydown', function (e) {
@@ -138,4 +176,6 @@ window.addEventListener('keydown', function (e) {
     }
 });
 
+// İlk başta temayı uygula
+applyTheme(themes.easy);
 displayWord();
