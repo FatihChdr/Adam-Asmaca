@@ -93,6 +93,25 @@ body {
     transition: transform 0.4s ease-in-out;
 }
 
+
+#score {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#score p {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#score-value {
+    font-size: 36px;
+    font-weight: bold;
+    color: #3498db;
+}
+
+
+
 #message.show {
     transform: translateY(-80px);
 }
