@@ -22,7 +22,6 @@ const wordLists = {
     hard: ['volkan', 'şimşek', 'gizemli', 'geceyarısı', 'cadılarbayramı'],
 };
 
-
 const themes = {
     easy: {
         backgroundColor: '#87CEEB',  // Light Blue
@@ -62,9 +61,9 @@ function displayWord() {
     word_el.innerHTML = selectedWord
         .split('')
         .map(letter => `
-        <div class="letter">
-            ${correctLetters.includes(letter) ? letter : ''}
-        </div>`
+            <div class="letter">
+                ${correctLetters.includes(letter) ? letter : ''}
+            </div>`
         )
         .join('');
 
@@ -78,9 +77,9 @@ function displayWord() {
 
 function updateWrongLetters() {
     wrongLetters_el.innerHTML = `
-      ${wrongLetters.length > 0 ? '<h3>Hatalı Harfler</h3>' : ''}
-      ${wrongLetters.map(letter => `<span>${letter}</span>`)}
-  `;
+        ${wrongLetters.length > 0 ? '<h3>Hatalı Harfler</h3>' : ''}
+        ${wrongLetters.map(letter => `<span>${letter}</span>`)}
+    `;
 
     items.forEach((item, index) => {
         const errorCount = wrongLetters.length;
@@ -93,7 +92,7 @@ function updateWrongLetters() {
 
     if (wrongLetters.length === items.length) {
         popup.style.display = 'flex';
-        message_el.innerText = 'Malesef kaybettiniz.';
+        message_el.innerText = `Malesef kaybettiniz. Doğru kelime: ${selectedWord}`;
         updateScore(-score); // Skoru sıfırla
     }
 }
