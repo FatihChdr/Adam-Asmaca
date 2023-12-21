@@ -10,6 +10,7 @@ body {
     flex-direction: column;
     align-items: center;
     overflow: hidden;
+    transition: background-color 1s ease-in-out; /* Sayfa geçiş efekti */
 }
 
 .container {
@@ -20,6 +21,7 @@ body {
     background-color: #34495e;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.5s ease; /* Gölge efekti */
 }
 
 .grafik {
@@ -30,6 +32,26 @@ body {
 
 .item {
     display: none;
+}
+
+.letter {
+    border-bottom: 3px solid #f39c12;
+    font-size: 30px;
+    margin: 0 3px;
+    height: 40px;
+    width: 25px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f39c12;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, filter 0.3s ease; /* Geçiş ve parlaklık efektleri */
+}
+
+.letter:hover {
+    background-color: #3498db;
+    filter: brightness(1.5);
 }
 
 #wrong-letters {
@@ -70,19 +92,6 @@ body {
     transform: translateX(-50%);
 }
 
-.letter {
-    border-bottom: 3px solid #f39c12;
-    font-size: 30px;
-    margin: 0 3px;
-    height: 40px;
-    width: 25px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f39c12;
-    color: #fff;
-}
-
 #message {
     background-color: rgba(0, 0, 0, 0.3);
     font-size: 20px;
@@ -92,7 +101,6 @@ body {
     bottom: -80px;
     transition: transform 0.4s ease-in-out;
 }
-
 
 #score {
     margin-top: 20px;
@@ -109,8 +117,6 @@ body {
     font-weight: bold;
     color: #3498db;
 }
-
-
 
 #message.show {
     transform: translateY(-80px);
