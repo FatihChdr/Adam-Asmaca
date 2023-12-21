@@ -19,7 +19,7 @@ let score = 0;
 const wordLists = {
     easy: ['gül', 'kelebek', 'kuş', 'deniz', 'orman'],
     medium: ['papatya', 'şelale', 'dağ', 'gökkuşağı', 'balık'],
-    hard: ['volkan', 'şimşek', 'gizemli', 'geceyarısı', 'cadılarbayramı','ümitsıla'],
+    hard: ['volkan', 'şimşek', 'gizemli', 'geceyarısı', 'cadılarbayramı'],
 };
 
 const themes = {
