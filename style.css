@@ -5,21 +5,23 @@
 body {
     background-color: #2c3e50;
     color: #ecf0f1;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: hidden;
+    transition: background-color 1s ease-in-out; /* Sayfa geçiş efekti */
 }
 
 .container {
     padding: 20px;
-    width: 90%;
-    max-width: 450px;
-    margin: 20px auto;
+    height: 450px;
+    width: 450px;
     position: relative;
     background-color: #34495e;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.5s ease; /* Gölge efekti */
 }
 
 .grafik {
@@ -44,7 +46,7 @@ body {
     background-color: #f39c12;
     color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s ease, filter 0.3s ease;
+    transition: background-color 0.3s ease, filter 0.3s ease; /* Geçiş ve parlaklık efektleri */
 }
 
 .letter:hover {
@@ -139,12 +141,14 @@ body {
     background-color: #2980b9;
 }
 
+/* Ekran Klavyesi Stilleri */
 #keyboard-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-end;
-    margin-top: 20px;
+    margin-top: 20px; /* Önceki değer: auto */
+    margin-bottom: 20px;
     position: fixed;
     bottom: 0;
     left: 50%;
