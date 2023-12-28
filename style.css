@@ -5,24 +5,25 @@
 body {
     background-color: #2c3e50;
     color: #ecf0f1;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: hidden;
-    transition: background-color 1s ease-in-out; /* Sayfa geçiş efekti */
+    min-height: 100vh; /* Ekleme: Sayfanın tamamını kaplaması için */
+    margin: 0; /* Ekleme: Sayfanın kenar boşluğunu kaldırmak için */
+    overflow-x: hidden; /* Ekleme: Yatay kaydırmayı engellemek için */
+    transition: background-color 1s ease-in-out;
 }
 
 .container {
     padding: 20px;
-    max-width: 450px; /* Maksimum genişlik ekleyerek sayfanın çok geniş olmasını önle */
-    margin: auto; /* Sayfayı ortala */
-    height: 100%; /* Yüksekliği 100% olarak ayarla */
+    max-width: 450px;
+    margin: auto;
+    height: 100%;
     position: relative;
     background-color: #34495e;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    transition: box-shadow 0.5s ease; /* Gölge efekti */
+    transition: box-shadow 0.5s ease;
 }
 
 .grafik {
@@ -47,7 +48,7 @@ body {
     background-color: #f39c12;
     color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s ease, filter 0.3s ease; /* Geçiş ve parlaklık efektleri */
+    transition: background-color 0.3s ease, filter 0.3s ease;
 }
 
 .letter:hover {
@@ -125,6 +126,8 @@ body {
 
 #difficulty-buttons {
     margin-top: 20px;
+    display: flex; /* Ekleme: Düğmeleri yatayda hizalamak için */
+    justify-content: center; /* Ekleme: Ortalama yapmak için */
 }
 
 #difficulty-buttons button {
@@ -136,7 +139,7 @@ body {
     border: none;
     color: #fff;
     border-radius: 5px;
-    width: 100px; /* Düğme genişliği artırıldı */
+    width: 100px;
 }
 
 /* Ekran Klavyesi Stilleri */
