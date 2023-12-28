@@ -9,6 +9,7 @@ const easyBtn = document.getElementById('easy-btn');
 const mediumBtn = document.getElementById('medium-btn');
 const hardBtn = document.getElementById('hard-btn');
 const scoreValue = document.getElementById('score-value');
+const letterInput = document.getElementById('letter-input');  // Yeni eklenen satır
 
 let correctLetters = [];
 let wrongLetters = [];
@@ -153,8 +154,9 @@ function changeDifficulty(level) {
     applyTheme(themes[difficultyLevel]); // Zorluk seviyesine göre tema uygula
 }
 
-window.addEventListener('keydown', function (e) {
-    const letter = e.key.toLowerCase(); // Küçük harfe çevir
+letterInput.addEventListener('input', function (e) {
+    // Input alanına harf girişi yapıldığında çalışacak fonksiyon
+    const letter = e.target.value.toLowerCase();
 
     if (/^[a-zçğıöşü]$/.test(letter)) { // Türkçe karakterleri de kontrol et
         if (selectedWord.includes(letter)) {
@@ -173,6 +175,9 @@ window.addEventListener('keydown', function (e) {
             }
         }
     }
+
+    // Input alanını temizle
+    e.target.value = '';
 });
 
 // İlk başta temayı uygula
