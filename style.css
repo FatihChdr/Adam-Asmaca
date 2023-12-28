@@ -16,9 +16,7 @@ body {
 .container {
     padding: 20px;
     height: 450px;
-    width: 90%; /* Değişiklik: Genişlik ayarı düzenlendi */
-    max-width: 450px; /* Yeni Ek: Maksimum genişlik ayarı eklendi */
-    margin: 20px auto; /* Yeni Ek: Merkezden hizalama */
+    width: 450px;
     position: relative;
     background-color: #34495e;
     border-radius: 10px;
