@@ -9,12 +9,11 @@ const easyBtn = document.getElementById('easy-btn');
 const mediumBtn = document.getElementById('medium-btn');
 const hardBtn = document.getElementById('hard-btn');
 const scoreValue = document.getElementById('score-value');
-const inputField = document.getElementById('input-field');
 
 let correctLetters = [];
 let wrongLetters = [];
 let selectedWord;
-let difficultyLevel = 'easy';
+let difficultyLevel = 'easy'; // Varsayılan zorluk seviyesi
 let score = 0;
 
 const wordLists = {
@@ -25,25 +24,26 @@ const wordLists = {
 
 const themes = {
     easy: {
-        backgroundColor: '#87CEEB',
+        backgroundColor: '#87CEEB',  // Light Blue
         textColor: '#000',
-        buttonColor: '#00FA9A',
+        buttonColor: '#00FA9A',  // Medium Spring Green
     },
     medium: {
-        backgroundColor: '#F0E68C',
+        backgroundColor: '#F0E68C',  // Khaki
         textColor: '#000',
-        buttonColor: '#FF8C00',
+        buttonColor: '#FF8C00',  // Dark Orange
     },
     hard: {
-        backgroundColor: '#8B0000',
+        backgroundColor: '#8B0000',  // Dark Red
         textColor: '#FFF',
-        buttonColor: '#4B0082',
+        buttonColor: '#4B0082',  // Indigo
     },
 };
 
 function applyTheme(theme) {
     document.body.style.backgroundColor = theme.backgroundColor;
     document.body.style.color = theme.textColor;
+    // Diğer elementlerin temalarını da aynı şekilde ayarlayabilirsiniz
 }
 
 function getRandomWord() {
@@ -58,8 +58,6 @@ function getRandomWord() {
 }
 
 function displayWord() {
-    selectedWord = getRandomWord();
-
     word_el.innerHTML = selectedWord
         .split('')
         .map(letter => `
@@ -152,13 +150,13 @@ function restartGame() {
 function changeDifficulty(level) {
     difficultyLevel = level;
     restartGame();
-    applyTheme(themes[difficultyLevel]);
+    applyTheme(themes[difficultyLevel]); // Zorluk seviyesine göre tema uygula
 }
 
 window.addEventListener('keydown', function (e) {
-    const letter = e.key.toLowerCase();
+    const letter = e.key.toLowerCase(); // Küçük harfe çevir
 
-    if (/^[a-zçğıöşü]$/.test(letter)) {
+    if (/^[a-zçğıöşü]$/.test(letter)) { // Türkçe karakterleri de kontrol et
         if (selectedWord.includes(letter)) {
             if (!correctLetters.includes(letter)) {
                 correctLetters.push(letter);
