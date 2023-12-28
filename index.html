@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="style.css">
     <title>Adam Asmaca</title>
 </head>
@@ -45,7 +45,12 @@
         </div>
 
         <!-- Ekran Klavyesi -->
-        <div id="keyboard-container" class="flex-container"></div>
+        <div id="keyboard-container">
+            <button class="keyboard-key">A</button>
+            <button class="keyboard-key">B</button>
+            <button class="keyboard-key">C</button>
+            <!-- Diğer klavye düğmeleri buraya eklenecek -->
+        </div>
     </div>
 
     <div id="popup-container">
@@ -59,7 +64,7 @@
         <p>Bu harfi zaten girdiniz.</p>
     </div>
 
-    <div id="difficulty-buttons" class="flex-container">
+    <div id="difficulty-buttons">
         <button id="easy-btn">Kolay</button>
         <button id="medium-btn">Orta</button>
         <button id="hard-btn">Zor</button>
