@@ -5,25 +5,25 @@
 body {
     background-color: #2c3e50;
     color: #ecf0f1;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh; /* Ekleme: Sayfanın tamamını kaplaması için */
-    margin: 0; /* Ekleme: Sayfanın kenar boşluğunu kaldırmak için */
-    overflow-x: hidden; /* Ekleme: Yatay kaydırmayı engellemek için */
-    transition: background-color 1s ease-in-out;
+    overflow: hidden;
+    transition: background-color 1s ease-in-out; /* Sayfa geçiş efekti */
 }
 
 .container {
     padding: 20px;
-    max-width: 450px;
-    margin: auto;
-    height: 100%;
+    height: 450px;
+    width: 90%; /* Değişiklik: Genişlik ayarı düzenlendi */
+    max-width: 450px; /* Yeni Ek: Maksimum genişlik ayarı eklendi */
+    margin: 20px auto; /* Yeni Ek: Merkezden hizalama */
     position: relative;
     background-color: #34495e;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    transition: box-shadow 0.5s ease;
+    transition: box-shadow 0.5s ease; /* Gölge efekti */
 }
 
 .grafik {
@@ -48,7 +48,7 @@ body {
     background-color: #f39c12;
     color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s ease, filter 0.3s ease;
+    transition: background-color 0.3s ease, filter 0.3s ease; /* Geçiş ve parlaklık efektleri */
 }
 
 .letter:hover {
@@ -126,8 +126,6 @@ body {
 
 #difficulty-buttons {
     margin-top: 20px;
-    display: flex; /* Ekleme: Düğmeleri yatayda hizalamak için */
-    justify-content: center; /* Ekleme: Ortalama yapmak için */
 }
 
 #difficulty-buttons button {
@@ -139,7 +137,10 @@ body {
     border: none;
     color: #fff;
     border-radius: 5px;
-    width: 100px;
+}
+
+#difficulty-buttons button:hover {
+    background-color: #2980b9;
 }
 
 /* Ekran Klavyesi Stilleri */
@@ -147,8 +148,9 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    margin-top: 20px;
+    align-items: flex-end;
+    margin-top: 20px; /* Önceki değer: auto */
+    margin-bottom: 20px;
     position: fixed;
     bottom: 0;
     left: 50%;
@@ -164,32 +166,8 @@ body {
     border: none;
     color: #fff;
     border-radius: 5px;
-    width: 50px;
-    height: 50px;
 }
 
 .keyboard-key:hover {
     background-color: #2980b9;
-}
-
-.flex-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-@media only screen and (max-width: 600px) {
-    .container {
-        max-width: 100%;
-    }
-
-    .keyboard-key {
-        width: 30px;
-        height: 30px;
-        font-size: 12px;
-    }
-
-    #difficulty-buttons button {
-        width: 70px;
-    }
 }
