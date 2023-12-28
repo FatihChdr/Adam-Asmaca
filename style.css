@@ -140,3 +140,32 @@ body {
 #difficulty-buttons button:hover {
     background-color: #2980b9;
 }
+
+/* Ekran Klavyesi Stilleri */
+#keyboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 20px; /* Önceki değer: auto */
+    margin-bottom: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.keyboard-key {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #3498db;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.keyboard-key:hover {
+    background-color: #2980b9;
+}
