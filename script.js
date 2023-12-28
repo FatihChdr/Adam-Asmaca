@@ -9,7 +9,7 @@ const easyBtn = document.getElementById('easy-btn');
 const mediumBtn = document.getElementById('medium-btn');
 const hardBtn = document.getElementById('hard-btn');
 const scoreValue = document.getElementById('score-value');
-const letterInput = document.getElementById('letter-input');  // Yeni eklenen satır
+const letterInput = document.getElementById('letter-input');
 
 let correctLetters = [];
 let wrongLetters = [];
@@ -44,7 +44,6 @@ const themes = {
 function applyTheme(theme) {
     document.body.style.backgroundColor = theme.backgroundColor;
     document.body.style.color = theme.textColor;
-    // Diğer elementlerin temalarını da aynı şekilde ayarlayabilirsiniz
 }
 
 function getRandomWord() {
@@ -94,7 +93,7 @@ function updateWrongLetters() {
     if (wrongLetters.length === items.length) {
         popup.style.display = 'flex';
         message_el.innerText = `Malesef kaybettiniz. Doğru kelime: ${selectedWord}`;
-        updateScore(-score); // Skoru sıfırla
+        updateScore(-score);
     }
 }
 
@@ -109,7 +108,7 @@ function displayMessage() {
 function updateScore(value) {
     score += value;
     if (value < 0) {
-        score = 0; // Eğer yanlış bilirse skoru sıfırla
+        score = 0;
     }
     scoreValue.innerText = score;
 }
@@ -151,14 +150,13 @@ function restartGame() {
 function changeDifficulty(level) {
     difficultyLevel = level;
     restartGame();
-    applyTheme(themes[difficultyLevel]); // Zorluk seviyesine göre tema uygula
+    applyTheme(themes[difficultyLevel]);
 }
 
 letterInput.addEventListener('input', function (e) {
-    // Input alanına harf girişi yapıldığında çalışacak fonksiyon
     const letter = e.target.value.toLowerCase();
 
-    if (/^[a-zçğıöşü]$/.test(letter)) { // Türkçe karakterleri de kontrol et
+    if (/^[a-zçğıöşü]$/.test(letter)) {
         if (selectedWord.includes(letter)) {
             if (!correctLetters.includes(letter)) {
                 correctLetters.push(letter);
@@ -176,10 +174,8 @@ letterInput.addEventListener('input', function (e) {
         }
     }
 
-    // Input alanını temizle
     e.target.value = '';
 });
 
-// İlk başta temayı uygula
 applyTheme(themes.easy);
 displayWord();
