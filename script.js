@@ -28,11 +28,6 @@ keyboardButtons.forEach(button => {
     });
 });
 
-// Klavye düğmelerini tıklamayı engelle
-keyboardContainer.addEventListener('click', function (event) {
-    event.preventDefault();
-});
-
 // Harfi kontrol etme fonksiyonu
 function checkLetter(letter) {
     letter = letter.toUpperCase(); // Harfi büyük harfe çevir
