@@ -15,8 +15,9 @@ body {
 
 .container {
     padding: 20px;
-    height: 450px;
-    width: 450px;
+    max-width: 450px; /* Maksimum genişlik ekleyerek sayfanın çok geniş olmasını önle */
+    margin: auto; /* Sayfayı ortala */
+    height: 100%; /* Yüksekliği 100% olarak ayarla */
     position: relative;
     background-color: #34495e;
     border-radius: 10px;
@@ -135,10 +136,7 @@ body {
     border: none;
     color: #fff;
     border-radius: 5px;
-}
-
-#difficulty-buttons button:hover {
-    background-color: #2980b9;
+    width: 100px; /* Düğme genişliği artırıldı */
 }
 
 /* Ekran Klavyesi Stilleri */
@@ -146,9 +144,8 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-end;
-    margin-top: 20px; /* Önceki değer: auto */
-    margin-bottom: 20px;
+    align-items: center;
+    margin-top: 20px;
     position: fixed;
     bottom: 0;
     left: 50%;
@@ -164,8 +161,32 @@ body {
     border: none;
     color: #fff;
     border-radius: 5px;
+    width: 50px;
+    height: 50px;
 }
 
 .keyboard-key:hover {
     background-color: #2980b9;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        max-width: 100%;
+    }
+
+    .keyboard-key {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    #difficulty-buttons button {
+        width: 70px;
+    }
 }
