@@ -28,24 +28,26 @@ keyboardButtons.forEach(button => {
     });
 });
 
+
 // Harfi kontrol etme fonksiyonu
 function checkLetter(letter) {
-    letter = letter.toUpperCase(); // Harfi büyük harfe çevir
-
     if (correctLetters.includes(letter) || wrongLetters.includes(letter)) {
         // Bu harfi zaten kontrol ettik, mesajı göster
         displayMessage("Bu harfi zaten girdiniz.");
     } else {
         // Harfi kontrol et ve duruma göre işlem yap
-        if (selectedWord.includes(letter)) {
-            correctLetters.push(letter);
+        const uppercaseLetter = letter.toLowerCase();
+        if (selectedWord.includes(uppercaseLetter)) {
+            correctLetters.push(uppercaseLetter);
             displayWord();
         } else {
-            wrongLetters.push(letter);
+            wrongLetters.push(uppercaseLetter);
             updateWrongLetters();
         }
     }
 }
+
+
 
 // Kelime listesi
 const wordLists = {
@@ -106,6 +108,7 @@ function changeDifficulty(level) {
 }
 
 // Kelime listesinden rastgele bir kelime seçme fonksiyonu
+// Kelime listesinden rastgele bir kelime seçme fonksiyonu
 function getRandomWord() {
     const words = wordLists[difficultyLevel];
     let newWord;
@@ -114,8 +117,9 @@ function getRandomWord() {
         newWord = words[Math.floor(Math.random() * words.length)];
     } while (newWord === selectedWord);
 
-    return newWord.toUpperCase(); // Seçilen kelimeyi büyük harfe çevirerek döndür
+    return newWord.toLowerCase(); // Seçilen kelimeyi küçük harfe çevirerek döndür
 }
+
 
 // Kelimeyi ekranda gösterme fonksiyonu
 function displayWord() {
